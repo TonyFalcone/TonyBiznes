@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>TonyBiznes</title>
+
+    <meta
+        name="theme-color"
+        content="#39ff88"
+    >
+
+    <link
+        rel="manifest"
+        href="manifest.json"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="app">
+
+    <header class="header">
+
+        <div class="logo-box">
+            <h1>TonyBiznes</h1>
+            <p>Kalkulator Weed GTA V RP</p>
+        </div>
+
+    </header>
+
+    <!-- PRODUKCJA -->
+
+    <section class="card">
+
+        <h2>🌿 Produkcja</h2>
+
+        <div class="field">
+
+            <label>Ilość topów</label>
+
+            <input
+                type="number"
+                id="topy"
+                min="0"
+                value="0"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>Cena cegły</label>
+
+            <input
+                type="range"
+                id="cenaCegly"
+                min="40000"
+                max="47000"
+                step="100"
+                value="40000"
+            >
+
+            <div
+                id="cenaLabel"
+                class="sliderValue"
+            >
+                $40,000
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- KOSZTY -->
+
+    <section class="card">
+
+        <h2>💰 Koszty produkcji</h2>
+
+        <div class="costRow">
+
+            <div class="costInfo">
+                🌱 Blue Dream
+                <span>$2,800</span>
+            </div>
+
+            <input
+                type="number"
+                id="nasiona"
+                min="0"
+                value="0"
+            >
+
+        </div>
+
+        <div class="costRow">
+
+            <div class="costInfo">
+                🧪 Nawóz Plonowy
+                <span>$4,000</span>
+            </div>
+
+            <input
+                type="number"
+                id="nawoz"
+                min="0"
+                value="0"
+            >
+
+        </div>
+
+        <div class="costRow">
+
+            <div class="costInfo">
+                🪴 Doniczka
+                <span>$28,000</span>
+            </div>
+
+            <input
+                type="number"
+                id="doniczki"
+                min="0"
+                value="0"
+            >
+
+        </div>
+
+        <div class="costRow">
+
+            <div class="costInfo">
+                💧 Nawadnianie
+                <span>$48,000</span>
+            </div>
+
+            <input
+                type="number"
+                id="nawadnianie"
+                min="0"
+                value="0"
+            >
+
+        </div>
+
+        <div class="totalCostBox">
+
+            Łączne koszty
+
+            <div id="koszty">
+                $0
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PODSUMOWANIE -->
+
+    <section class="card">
+
+        <h2>📊 Podsumowanie</h2>
+
+        <div class="summaryGrid">
+
+            <div class="summaryItem">
+                <span>Topów</span>
+                <strong id="sumTopy">
+                    0
+                </strong>
+            </div>
+
+            <div class="summaryItem">
+                <span>Cegieł</span>
+                <strong id="sumCegly">
+                    0
+                </strong>
+            </div>
+
+            <div class="summaryItem">
+                <span>Przychód</span>
+                <strong id="sumPrzychod">
+                    $0
+                </strong>
+            </div>
+
+            <div class="summaryItem">
+                <span>Koszty</span>
+                <strong id="sumKoszt">
+                    $0
+                </strong>
+            </div>
+
+        </div>
+
+        <div class="profitBox">
+
+            <span>Zysk netto</span>
+
+            <h3 id="sumNetto">
+                $0
+            </h3>
+
+        </div>
+
+        <button id="saveHarvest">
+            Zapisz zbiór
+        </button>
+
+    </section>
+
+    <!-- STATYSTYKI -->
+
+    <section class="card">
+
+        <h2>📈 Statystyki</h2>
+
+        <div class="statsGrid">
+
+            <div class="statCard">
+
+                <h3 id="statHarvests">
+                    0
+                </h3>
+
+                <p>Zbiory</p>
+
+            </div>
+
+            <div class="statCard">
+
+                <h3 id="statProfit">
+                    $0
+                </h3>
+
+                <p>Łączny zysk</p>
+
+            </div>
+
+            <div class="statCard">
+
+                <h3 id="statAverage">
+                    $0
+                </h3>
+
+                <p>Średni zysk</p>
+
+            </div>
+
+            <div class="statCard">
+
+                <h3 id="statTopy">
+                    0
+                </h3>
+
+                <p>Łącznie topów</p>
+
+            </div>
+
+            <div class="statCard">
+
+                <h3 id="statCegly">
+                    0
+                </h3>
+
+                <p>Łącznie cegieł</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- WYKRES -->
+
+    <section class="card">
+
+        <h2>📉 Wykres zysków</h2>
+
+        <canvas id="profitChart"></canvas>
+
+    </section>
+
+    <!-- FILTR -->
+
+    <section class="card">
+
+        <h2>🔎 Historia</h2>
+
+        <input
+            type="text"
+            id="historyFilter"
+            placeholder="Szukaj po dacie..."
+        >
+
+        <div id="historyList">
+        </div>
+
+    </section>
+
+    <!-- RANKING -->
+
+    <section class="card">
+
+        <h2>🏆 Ranking TOP 5</h2>
+
+        <div id="rankingList">
+        </div>
+
+    </section>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
